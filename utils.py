@@ -2,7 +2,11 @@ import numpy as np
 import pandas as pd
 
 def get_data_transformed_by_pipe(pipe, X, y):
-    return pipe[:-1].fit_transform(X, y)
+    print('ok')
+    try:
+        return pipe[:-1].fit_transform(X, y)
+    except TypeError:
+        return pipe.fit_transform(X, y)
 
 def feature_importance(X, y, pipe):
     X_train_transf = get_data_transformed_by_pipe(pipe, X, y)
